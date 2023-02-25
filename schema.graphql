@@ -1,0 +1,984 @@
+"""
+AspectRatio component is used to embed responsive videos and maps, etc. [See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/AspectRatio)
+"""
+type AspectRatio implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): AspectRatioLinkingCollections
+  maxW(locale: String): String
+  ratio(locale: String): Float
+  sys: Sys!
+}
+
+type AspectRatioCollection {
+  items: [AspectRatio]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input AspectRatioFilter {
+  AND: [AspectRatioFilter]
+  OR: [AspectRatioFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  maxW: String
+  maxW_contains: String
+  maxW_exists: Boolean
+  maxW_in: [String]
+  maxW_not: String
+  maxW_not_contains: String
+  maxW_not_in: [String]
+  ratio: Float
+  ratio_exists: Boolean
+  ratio_gt: Float
+  ratio_gte: Float
+  ratio_in: [Float]
+  ratio_lt: Float
+  ratio_lte: Float
+  ratio_not: Float
+  ratio_not_in: [Float]
+  sys: SysFilter
+}
+
+type AspectRatioLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum AspectRatioOrder {
+  maxW_ASC
+  maxW_DESC
+  ratio_ASC
+  ratio_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""Represents a binary file in a space. An asset can be any file type."""
+type Asset {
+  contentType(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  fileName(locale: String): String
+  height(locale: String): Int
+  linkedFrom(allowedLocales: [String]): AssetLinkingCollections
+  size(locale: String): Int
+  sys: Sys!
+  title(locale: String): String
+  url(locale: String, transform: ImageTransformOptions): String
+  width(locale: String): Int
+}
+
+type AssetCollection {
+  items: [Asset]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input AssetFilter {
+  AND: [AssetFilter]
+  OR: [AssetFilter]
+  contentType: String
+  contentType_contains: String
+  contentType_exists: Boolean
+  contentType_in: [String]
+  contentType_not: String
+  contentType_not_contains: String
+  contentType_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  fileName: String
+  fileName_contains: String
+  fileName_exists: Boolean
+  fileName_in: [String]
+  fileName_not: String
+  fileName_not_contains: String
+  fileName_not_in: [String]
+  height: Int
+  height_exists: Boolean
+  height_gt: Int
+  height_gte: Int
+  height_in: [Int]
+  height_lt: Int
+  height_lte: Int
+  height_not: Int
+  height_not_in: [Int]
+  size: Int
+  size_exists: Boolean
+  size_gt: Int
+  size_gte: Int
+  size_in: [Int]
+  size_lt: Int
+  size_lte: Int
+  size_not: Int
+  size_not_in: [Int]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
+  width: Int
+  width_exists: Boolean
+  width_gt: Int
+  width_gte: Int
+  width_in: [Int]
+  width_lt: Int
+  width_lte: Int
+  width_not: Int
+  width_not_in: [Int]
+}
+
+type AssetLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  iconCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): IconCollection
+  imageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ImageCollection
+}
+
+enum AssetOrder {
+  contentType_ASC
+  contentType_DESC
+  fileName_ASC
+  fileName_DESC
+  height_ASC
+  height_DESC
+  size_ASC
+  size_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
+  width_ASC
+  width_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/badge)
+"""
+type Badge implements Entry {
+  childrenCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BadgeChildrenCollection
+  colorScheme(locale: String): JSON
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): BadgeLinkingCollections
+  sys: Sys!
+}
+
+type BadgeChildrenCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type BadgeCollection {
+  items: [Badge]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input BadgeFilter {
+  AND: [BadgeFilter]
+  OR: [BadgeFilter]
+  childrenCollection_exists: Boolean
+  colorScheme_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  sys: SysFilter
+}
+
+type BadgeLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum BadgeOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Box is the most abstract component on top of which all other Chakra UI components are built. By default, it renders a `div` element [See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/box)
+"""
+type Box implements Entry {
+  borderWidth(locale: String): String
+  childrenCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BoxChildrenCollection
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): BoxLinkingCollections
+  maxW(locale: String): String
+  p(locale: String): String
+  sys: Sys!
+}
+
+type BoxChildrenCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type BoxCollection {
+  items: [Box]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input BoxFilter {
+  AND: [BoxFilter]
+  OR: [BoxFilter]
+  borderWidth: String
+  borderWidth_contains: String
+  borderWidth_exists: Boolean
+  borderWidth_in: [String]
+  borderWidth_not: String
+  borderWidth_not_contains: String
+  borderWidth_not_in: [String]
+  childrenCollection_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  maxW: String
+  maxW_contains: String
+  maxW_exists: Boolean
+  maxW_in: [String]
+  maxW_not: String
+  maxW_not_contains: String
+  maxW_not_in: [String]
+  p: String
+  p_contains: String
+  p_exists: Boolean
+  p_in: [String]
+  p_not: String
+  p_not_contains: String
+  p_not_in: [String]
+  sys: SysFilter
+}
+
+type BoxLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum BoxOrder {
+  borderWidth_ASC
+  borderWidth_DESC
+  maxW_ASC
+  maxW_DESC
+  p_ASC
+  p_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Center is a layout component that centers its child within itself. [See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/center)
+"""
+type Center implements Entry {
+  childrenCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CenterChildrenCollection
+  contentfulMetadata: ContentfulMetadata!
+  h(locale: String): String
+  linkedFrom(allowedLocales: [String]): CenterLinkingCollections
+  sys: Sys!
+}
+
+type CenterChildrenCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type CenterCollection {
+  items: [Center]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input CenterFilter {
+  AND: [CenterFilter]
+  OR: [CenterFilter]
+  childrenCollection_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  h: String
+  h_contains: String
+  h_exists: Boolean
+  h_in: [String]
+  h_not: String
+  h_not_contains: String
+  h_not_in: [String]
+  sys: SysFilter
+}
+
+type CenterLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum CenterOrder {
+  h_ASC
+  h_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type ContentfulMetadata {
+  tags: [ContentfulTag]!
+}
+
+input ContentfulMetadataFilter {
+  tags: ContentfulMetadataTagsFilter
+  tags_exists: Boolean
+}
+
+input ContentfulMetadataTagsFilter {
+  id_contains_all: [String]
+  id_contains_none: [String]
+  id_contains_some: [String]
+}
+
+"""
+Represents a tag entity for finding and organizing content easily.
+    Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+"""
+type ContentfulTag {
+  id: String
+  name: String
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z,
+    compliant with the 'date-time' format outlined in section 5.6 of
+    the RFC 3339 profile of the ISO 8601 standard for representation
+    of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""
+The 'Dimension' type represents dimensions as whole numeric values between `1` and `4000`.
+"""
+scalar Dimension
+
+interface Entry {
+  contentfulMetadata: ContentfulMetadata!
+  sys: Sys!
+}
+
+type EntryCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input EntryFilter {
+  AND: [EntryFilter]
+  OR: [EntryFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  sys: SysFilter
+}
+
+enum EntryOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Flex is Box with display set to flex and comes with helpful style shorthand. It renders a `div` element. [See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/flex)
+"""
+type Flex implements Entry {
+  align(locale: String): String
+  childrenCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FlexChildrenCollection
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): FlexLinkingCollections
+  mt(locale: String): String
+  sys: Sys!
+}
+
+type FlexChildrenCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type FlexCollection {
+  items: [Flex]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input FlexFilter {
+  AND: [FlexFilter]
+  OR: [FlexFilter]
+  align: String
+  align_contains: String
+  align_exists: Boolean
+  align_in: [String]
+  align_not: String
+  align_not_contains: String
+  align_not_in: [String]
+  childrenCollection_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  mt: String
+  mt_contains: String
+  mt_exists: Boolean
+  mt_in: [String]
+  mt_not: String
+  mt_not_contains: String
+  mt_not_in: [String]
+  sys: SysFilter
+}
+
+type FlexLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum FlexOrder {
+  align_ASC
+  align_DESC
+  mt_ASC
+  mt_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""The 'HexColor' type represents color in `rgb:ffffff` string format."""
+scalar HexColor
+
+"""
+[See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/icon)
+"""
+type Icon implements Entry {
+  color(locale: String): JSON
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): IconLinkingCollections
+  src(locale: String, preview: Boolean): Asset
+  sys: Sys!
+}
+
+type IconCollection {
+  items: [Icon]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input IconFilter {
+  AND: [IconFilter]
+  OR: [IconFilter]
+  color_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  src_exists: Boolean
+  sys: SysFilter
+}
+
+type IconLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum IconOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+The Image component is used to display images with support for fallback. [See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/image)
+"""
+type Image implements Entry {
+  borderRadius(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  height(locale: String): Int
+  linkedFrom(allowedLocales: [String]): ImageLinkingCollections
+  priority(locale: String): Boolean
+  src(locale: String, preview: Boolean): Asset
+  sys: Sys!
+  width(locale: String): Int
+}
+
+type ImageCollection {
+  items: [Image]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ImageFilter {
+  AND: [ImageFilter]
+  OR: [ImageFilter]
+  borderRadius: String
+  borderRadius_contains: String
+  borderRadius_exists: Boolean
+  borderRadius_in: [String]
+  borderRadius_not: String
+  borderRadius_not_contains: String
+  borderRadius_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  height: Int
+  height_exists: Boolean
+  height_gt: Int
+  height_gte: Int
+  height_in: [Int]
+  height_lt: Int
+  height_lte: Int
+  height_not: Int
+  height_not_in: [Int]
+  priority: Boolean
+  priority_exists: Boolean
+  priority_not: Boolean
+  src_exists: Boolean
+  sys: SysFilter
+  width: Int
+  width_exists: Boolean
+  width_gt: Int
+  width_gte: Int
+  width_in: [Int]
+  width_lt: Int
+  width_lte: Int
+  width_not: Int
+  width_not_in: [Int]
+}
+
+enum ImageFormat {
+  AVIF
+
+  """JPG image format."""
+  JPG
+
+  """
+  Progressive JPG format stores multiple passes of an image in progressively higher detail.
+          When a progressive image is loading, the viewer will first see a lower quality pixelated version which
+          will gradually improve in detail, until the image is fully downloaded. This is to display an image as
+          early as possible to make the layout look as designed.
+  """
+  JPG_PROGRESSIVE
+
+  """PNG image format"""
+  PNG
+
+  """
+  8-bit PNG images support up to 256 colors and weigh less than the standard 24-bit PNG equivalent.
+          The 8-bit PNG format is mostly used for simple images, such as icons or logos.
+  """
+  PNG8
+
+  """WebP image format."""
+  WEBP
+}
+
+type ImageLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ImageOrder {
+  borderRadius_ASC
+  borderRadius_DESC
+  height_ASC
+  height_DESC
+  priority_ASC
+  priority_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  width_ASC
+  width_DESC
+}
+
+enum ImageResizeFocus {
+  """Focus the resizing on the bottom."""
+  BOTTOM
+
+  """Focus the resizing on the bottom left."""
+  BOTTOM_LEFT
+
+  """Focus the resizing on the bottom right."""
+  BOTTOM_RIGHT
+
+  """Focus the resizing on the center."""
+  CENTER
+
+  """Focus the resizing on the largest face."""
+  FACE
+
+  """Focus the resizing on the area containing all the faces."""
+  FACES
+
+  """Focus the resizing on the left."""
+  LEFT
+
+  """Focus the resizing on the right."""
+  RIGHT
+
+  """Focus the resizing on the top."""
+  TOP
+
+  """Focus the resizing on the top left."""
+  TOP_LEFT
+
+  """Focus the resizing on the top right."""
+  TOP_RIGHT
+}
+
+enum ImageResizeStrategy {
+  """
+  Crops a part of the original image to fit into the specified dimensions.
+  """
+  CROP
+
+  """
+  Resizes the image to the specified dimensions, cropping the image if needed.
+  """
+  FILL
+
+  """Resizes the image to fit into the specified dimensions."""
+  FIT
+
+  """
+  Resizes the image to the specified dimensions, padding the image if needed.
+          Uses desired background color as padding color.
+  """
+  PAD
+
+  """
+  Resizes the image to the specified dimensions, changing the original aspect ratio if needed.
+  """
+  SCALE
+
+  """Creates a thumbnail from the image."""
+  THUMB
+}
+
+input ImageTransformOptions {
+  """
+  Desired background color, used with corner radius or `PAD` resize strategy.
+          Defaults to transparent (for `PNG`, `PNG8` and `WEBP`) or white (for `JPG` and `JPG_PROGRESSIVE`).
+  """
+  backgroundColor: HexColor
+
+  """
+  Desired corner radius in pixels.
+          Results in an image with rounded corners (pass `-1` for a full circle/ellipse).
+          Defaults to `0`. Uses desired background color as padding color,
+          unless the format is `JPG` or `JPG_PROGRESSIVE` and resize strategy is `PAD`, then defaults to white.
+  """
+  cornerRadius: Int
+
+  """Desired image format. Defaults to the original image format."""
+  format: ImageFormat
+
+  """Desired height in pixels. Defaults to the original image height."""
+  height: Dimension
+
+  """
+  Desired quality of the image in percents.
+          Used for `PNG8`, `JPG`, `JPG_PROGRESSIVE` and `WEBP` formats.
+  """
+  quality: Quality
+
+  """Desired resize focus area. Defaults to `CENTER`."""
+  resizeFocus: ImageResizeFocus
+
+  """Desired resize strategy. Defaults to `FIT`."""
+  resizeStrategy: ImageResizeStrategy
+
+  """Desired width in pixels. Defaults to the original image width."""
+  width: Dimension
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+[See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/page)
+"""
+type Page implements Entry {
+  childrenCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageChildrenCollection
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): PageLinkingCollections
+  sys: Sys!
+}
+
+type PageChildrenCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type PageCollection {
+  items: [Page]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input PageFilter {
+  AND: [PageFilter]
+  OR: [PageFilter]
+  childrenCollection_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  sys: SysFilter
+}
+
+type PageLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PageOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+The 'Quality' type represents quality as whole numeric values between `1` and `100`.
+"""
+scalar Quality
+
+type Query {
+  aspectRatio(id: String!, locale: String, preview: Boolean): AspectRatio
+  aspectRatioCollection(limit: Int = 100, locale: String, order: [AspectRatioOrder], preview: Boolean, skip: Int = 0, where: AspectRatioFilter): AspectRatioCollection
+  asset(id: String!, locale: String, preview: Boolean): Asset
+  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  badge(id: String!, locale: String, preview: Boolean): Badge
+  badgeCollection(limit: Int = 100, locale: String, order: [BadgeOrder], preview: Boolean, skip: Int = 0, where: BadgeFilter): BadgeCollection
+  box(id: String!, locale: String, preview: Boolean): Box
+  boxCollection(limit: Int = 100, locale: String, order: [BoxOrder], preview: Boolean, skip: Int = 0, where: BoxFilter): BoxCollection
+  center(id: String!, locale: String, preview: Boolean): Center
+  centerCollection(limit: Int = 100, locale: String, order: [CenterOrder], preview: Boolean, skip: Int = 0, where: CenterFilter): CenterCollection
+  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  flex(id: String!, locale: String, preview: Boolean): Flex
+  flexCollection(limit: Int = 100, locale: String, order: [FlexOrder], preview: Boolean, skip: Int = 0, where: FlexFilter): FlexCollection
+  icon(id: String!, locale: String, preview: Boolean): Icon
+  iconCollection(limit: Int = 100, locale: String, order: [IconOrder], preview: Boolean, skip: Int = 0, where: IconFilter): IconCollection
+  image(id: String!, locale: String, preview: Boolean): Image
+  imageCollection(limit: Int = 100, locale: String, order: [ImageOrder], preview: Boolean, skip: Int = 0, where: ImageFilter): ImageCollection
+  page(id: String!, locale: String, preview: Boolean): Page
+  pageCollection(limit: Int = 100, locale: String, order: [PageOrder], preview: Boolean, skip: Int = 0, where: PageFilter): PageCollection
+  text(id: String!, locale: String, preview: Boolean): Text
+  textCollection(limit: Int = 100, locale: String, order: [TextOrder], preview: Boolean, skip: Int = 0, where: TextFilter): TextCollection
+}
+
+type Sys {
+  environmentId: String!
+  firstPublishedAt: DateTime
+  id: String!
+  publishedAt: DateTime
+  publishedVersion: Int
+  spaceId: String!
+}
+
+input SysFilter {
+  firstPublishedAt: DateTime
+  firstPublishedAt_exists: Boolean
+  firstPublishedAt_gt: DateTime
+  firstPublishedAt_gte: DateTime
+  firstPublishedAt_in: [DateTime]
+  firstPublishedAt_lt: DateTime
+  firstPublishedAt_lte: DateTime
+  firstPublishedAt_not: DateTime
+  firstPublishedAt_not_in: [DateTime]
+  id: String
+  id_contains: String
+  id_exists: Boolean
+  id_in: [String]
+  id_not: String
+  id_not_contains: String
+  id_not_in: [String]
+  publishedAt: DateTime
+  publishedAt_exists: Boolean
+  publishedAt_gt: DateTime
+  publishedAt_gte: DateTime
+  publishedAt_in: [DateTime]
+  publishedAt_lt: DateTime
+  publishedAt_lte: DateTime
+  publishedAt_not: DateTime
+  publishedAt_not_in: [DateTime]
+  publishedVersion: Float
+  publishedVersion_exists: Boolean
+  publishedVersion_gt: Float
+  publishedVersion_gte: Float
+  publishedVersion_in: [Float]
+  publishedVersion_lt: Float
+  publishedVersion_lte: Float
+  publishedVersion_not: Float
+  publishedVersion_not_in: [Float]
+}
+
+"""
+Text is the used to render text and paragraphs within an interface. [See type definition](https://app.contentful.com/spaces/w2p4p07dx3ir/content_types/text)
+"""
+type Text implements Entry {
+  children(locale: String): String
+  color(locale: String): JSON
+  contentfulMetadata: ContentfulMetadata!
+  fontSize(locale: String): String
+  fontWeight(locale: String): String
+  lineHeight(locale: String): String
+  linkedFrom(allowedLocales: [String]): TextLinkingCollections
+  ml(locale: String): String
+  mt(locale: String): String
+  sys: Sys!
+  textTransform(locale: String): String
+}
+
+type TextCollection {
+  items: [Text]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input TextFilter {
+  AND: [TextFilter]
+  OR: [TextFilter]
+  children: String
+  children_contains: String
+  children_exists: Boolean
+  children_in: [String]
+  children_not: String
+  children_not_contains: String
+  children_not_in: [String]
+  color_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  fontSize: String
+  fontSize_contains: String
+  fontSize_exists: Boolean
+  fontSize_in: [String]
+  fontSize_not: String
+  fontSize_not_contains: String
+  fontSize_not_in: [String]
+  fontWeight: String
+  fontWeight_contains: String
+  fontWeight_exists: Boolean
+  fontWeight_in: [String]
+  fontWeight_not: String
+  fontWeight_not_contains: String
+  fontWeight_not_in: [String]
+  lineHeight: String
+  lineHeight_contains: String
+  lineHeight_exists: Boolean
+  lineHeight_in: [String]
+  lineHeight_not: String
+  lineHeight_not_contains: String
+  lineHeight_not_in: [String]
+  ml: String
+  ml_contains: String
+  ml_exists: Boolean
+  ml_in: [String]
+  ml_not: String
+  ml_not_contains: String
+  ml_not_in: [String]
+  mt: String
+  mt_contains: String
+  mt_exists: Boolean
+  mt_in: [String]
+  mt_not: String
+  mt_not_contains: String
+  mt_not_in: [String]
+  sys: SysFilter
+  textTransform: String
+  textTransform_contains: String
+  textTransform_exists: Boolean
+  textTransform_in: [String]
+  textTransform_not: String
+  textTransform_not_contains: String
+  textTransform_not_in: [String]
+}
+
+type TextLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum TextOrder {
+  fontSize_ASC
+  fontSize_DESC
+  fontWeight_ASC
+  fontWeight_DESC
+  lineHeight_ASC
+  lineHeight_DESC
+  ml_ASC
+  ml_DESC
+  mt_ASC
+  mt_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  textTransform_ASC
+  textTransform_DESC
+}
