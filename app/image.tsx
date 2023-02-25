@@ -1,8 +1,9 @@
 import { graphql } from '@/gql';
-import { client } from '@/lib/client';
 import * as chakra from '@/lib/chakra-ui';
-import NextImage from 'next/image';
+import { client } from '@/lib/client';
 import { pickDefined } from '@/lib/pick-defined';
+import NextImage from 'next/image';
+import { getPlaiceholder } from 'plaiceholder';
 
 type Props = {
   id: string;
@@ -38,15 +39,18 @@ export default async function Image({ id }: Props) {
   }
 
   const { src, priority, height, width, ...props } = data.image;
+  const { img, base64 } = await getPlaiceholder(src.url!, {
+    size: 10,
+  });
 
   return (
     <chakra.Box {...pickDefined(props)} overflow="hidden">
       <NextImage
-        src={src.url!}
         alt={src.description!}
-        width={width ?? src.width!}
-        height={height ?? src.height!}
         priority={priority ?? false}
+        {...img}
+        blurDataURL={base64}
+        placeholder="blur"
       />
     </chakra.Box>
   );
