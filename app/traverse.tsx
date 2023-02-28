@@ -1,6 +1,5 @@
 import { graphql } from '@/gql';
 import { ResultOf } from '@graphql-typed-document-node/core';
-import AspectRatio from './aspect-ratio';
 import Badge from './badge';
 import Box from './box';
 import Center from './center';
@@ -40,9 +39,6 @@ export default function Traverse(props: Props) {
   }
 
   switch (props.children.__typename) {
-    case 'AspectRatio':
-      // @ts-expect-error Server Component
-      return <AspectRatio {...props.children.sys} />;
     case 'Badge':
       // @ts-expect-error Server Component
       return <Badge {...props.children.sys} />;

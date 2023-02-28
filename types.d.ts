@@ -1,1 +1,7 @@
-declare module 'html-to-react';
+import 'react';
+
+declare module 'react' {
+  export interface CSSProperties {
+    [key: `--${string}`]: string | number;
+  }
+}

@@ -1,7 +1,11 @@
 import { graphql } from '@/gql';
 import { client } from '@/lib/client';
-import * as chakra from '@/lib/chakra-ui';
 import { Parser } from 'html-to-react';
+import tailwindConfig from '@/tailwind.config';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import { RecursiveKeyValuePair } from 'tailwindcss/types/config';
+
+const fullConfig = resolveConfig(tailwindConfig);
 
 type Props = {
   id: string;
@@ -35,8 +39,19 @@ export default async function Icon({ id }: Props) {
   } = parser.parse(await (await fetch(src?.url!)).text());
 
   return (
-    <chakra.Icon color={color.name} fill="current" {...attributes}>
+    <svg
+      className="h-[1em] w-[1em] fill-current text-[var(--color)]"
+      style={{
+        '--color': (
+          fullConfig.theme?.colors?.[
+            color.name.split('.')[0]
+          ] as RecursiveKeyValuePair
+        )[color.name.split('.')[1]],
+      }}
+      color={color.name}
+      {...attributes}
+    >
       {children}
-    </chakra.Icon>
+    </svg>
   );
 }

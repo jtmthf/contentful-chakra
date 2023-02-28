@@ -1,8 +1,10 @@
 import { graphql } from '@/gql';
 import { client } from '@/lib/client';
-import * as chakra from '@/lib/chakra-ui';
-import { pickDefined } from '@/lib/pick-defined';
+import tailwindConfig from '@/tailwind.config';
+import resolveConfig from 'tailwindcss/resolveConfig';
 import Traverse from './traverse';
+
+const fullConfig = resolveConfig(tailwindConfig);
 
 type Props = {
   id: string;
@@ -31,11 +33,18 @@ export default async function Box({ id }: Props) {
     })
     .toPromise();
 
-  const { childrenCollection, ...props } = data?.box ?? {};
+  const { childrenCollection, p, maxW, borderWidth } = data?.box ?? {};
 
   return (
-    <chakra.Box {...pickDefined(props)}>
+    <div
+      className="p-[var(--p)] max-w-[var(--max-w)] [border-width:var(--border-width)]"
+      style={{
+        '--p': fullConfig.theme?.padding?.[p as string] as string,
+        '--max-w': maxW as string,
+        '--border-width': borderWidth as string,
+      }}
+    >
       <Traverse>{childrenCollection?.items}</Traverse>
-    </chakra.Box>
+    </div>
   );
 }

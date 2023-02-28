@@ -1,8 +1,10 @@
 import { graphql } from '@/gql';
 import { client } from '@/lib/client';
-import * as chakra from '@/lib/chakra-ui';
-import { pickDefined } from '@/lib/pick-defined';
+import tailwindConfig from '@/tailwind.config';
+import resolveConfig from 'tailwindcss/resolveConfig';
 import Traverse from './traverse';
+
+const fullConfig = resolveConfig(tailwindConfig);
 
 type Props = {
   id: string;
@@ -30,11 +32,17 @@ export default async function Flex({ id }: Props) {
     })
     .toPromise();
 
-  const { childrenCollection, ...props } = data?.flex ?? {};
+  const { childrenCollection, align, mt } = data?.flex ?? {};
 
   return (
-    <chakra.Flex {...pickDefined(props)}>
+    <div
+      className="flex [align-items:var(--align)] mt-[var(--mt)]"
+      style={{
+        '--align': align as string,
+        '--mt': fullConfig.theme?.margin?.[mt as string] as string,
+      }}
+    >
       <Traverse>{childrenCollection?.items}</Traverse>
-    </chakra.Flex>
+    </div>
   );
 }

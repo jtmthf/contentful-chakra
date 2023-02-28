@@ -1,8 +1,11 @@
 import { graphql } from '@/gql';
-import * as chakra from '@/lib/chakra-ui';
 import { client } from '@/lib/client';
-import { pickDefined } from '@/lib/pick-defined';
+import tailwindConfig from '@/tailwind.config';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import { RecursiveKeyValuePair } from 'tailwindcss/types/config';
 import Traverse from './traverse';
+
+const fullConfig = resolveConfig(tailwindConfig);
 
 type Props = {
   id: string;
@@ -32,8 +35,18 @@ export default async function Badge({ id }: Props) {
   const { childrenCollection, colorScheme } = data?.badge ?? {};
 
   return (
-    <chakra.Badge colorScheme={colorScheme?.name}>
+    <span
+      className="inline-block whitespace-nowrap align-middle px-1 rounded-sm uppercase text-xs font-bold bg-[var(--badge-bg)] text-[var(--badge-color)]"
+      style={{
+        '--badge-bg': (
+          fullConfig.theme?.colors?.[colorScheme.name] as RecursiveKeyValuePair
+        )['100'] as string,
+        '--badge-color': (
+          fullConfig.theme?.colors?.[colorScheme.name] as RecursiveKeyValuePair
+        )['800'] as string,
+      }}
+    >
       <Traverse>{childrenCollection?.items}</Traverse>
-    </chakra.Badge>
+    </span>
   );
 }

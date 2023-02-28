@@ -1,8 +1,10 @@
 import { graphql } from '@/gql';
 import { client } from '@/lib/client';
-import * as chakra from '@/lib/chakra-ui';
-import { pickDefined } from '@/lib/pick-defined';
+import tailwindConfig from '@/tailwind.config';
+import resolveConfig from 'tailwindcss/resolveConfig';
 import Traverse from './traverse';
+
+const fullConfig = resolveConfig(tailwindConfig);
 
 type Props = {
   id: string;
@@ -29,11 +31,16 @@ export default async function Center({ id }: Props) {
     })
     .toPromise();
 
-  const { childrenCollection, ...props } = data?.center ?? {};
+  const { childrenCollection, h } = data?.center ?? {};
 
   return (
-    <chakra.Center {...pickDefined(props)}>
+    <div
+      className="flex items-center justify-center h-[var(--h)]"
+      style={{
+        '--h': h as string,
+      }}
+    >
       <Traverse>{childrenCollection?.items}</Traverse>
-    </chakra.Center>
+    </div>
   );
 }

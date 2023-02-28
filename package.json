@@ -10,14 +10,10 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.5.1",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
     "@graphql-typed-document-node/core": "^3.1.2",
     "@urql/core": "^3.1.1",
     "eslint": "8.34.0",
     "eslint-config-next": "13.2.1",
-    "framer-motion": "^9.1.6",
     "graphql": "^16.6.0",
     "html-to-react": "^1.5.0",
     "markdown-to-jsx": "^7.1.9",
@@ -39,7 +35,10 @@
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
     "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7",
     "ts-node": "^10.9.1"
   }
 }

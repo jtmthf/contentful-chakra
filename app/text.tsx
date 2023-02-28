@@ -1,8 +1,11 @@
 import { graphql } from '@/gql';
 import { client } from '@/lib/client';
-import * as chakra from '@/lib/chakra-ui';
-import { pickDefined } from '@/lib/pick-defined';
 import Markdown from 'markdown-to-jsx';
+import tailwindConfig from '@/tailwind.config';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import { RecursiveKeyValuePair } from 'tailwindcss/types/config';
+
+const fullConfig = resolveConfig(tailwindConfig);
 
 type Props = {
   id: string;
@@ -31,12 +34,41 @@ export default async function Text({ id }: Props) {
     })
     .toPromise();
 
-  const { children, color, ...props } = data?.text ?? {};
+  const {
+    children,
+    color,
+    ml,
+    textTransform,
+    fontSize,
+    fontWeight,
+    mt,
+    lineHeight,
+  } = data?.text ?? {};
+
+  const [colorFamily, colorShade] = color?.name?.split('.') ?? [];
 
   return (
-    // @ts-ignore
-    <chakra.Text color={color?.name} {...pickDefined(props)}>
+    <p
+      className="text-[var(--color)] ml-[var(--ml)] mt-[var(--mt)] [text-transform:var(--text-transform)] [font-size:var(--font-size)] [font-weight:var(--font-weight)] leading-[var(--line-height)]"
+      style={{
+        '--color': (
+          fullConfig.theme?.colors?.[colorFamily] as RecursiveKeyValuePair
+        )?.[colorShade] as string,
+        '--ml': fullConfig.theme?.margin?.[ml as string] as string,
+        '--mt': fullConfig.theme?.margin?.[mt as string] as string,
+        '--text-transform': textTransform as string,
+        '--font-size': fullConfig.theme?.fontSize?.[
+          fontSize as string
+        ] as string,
+        '--font-weight': fullConfig.theme?.fontWeight?.[
+          fontWeight as string
+        ] as string,
+        '--line-height': fullConfig.theme?.lineHeight?.[
+          lineHeight as string
+        ] as string,
+      }}
+    >
       <Markdown>{children ?? ''}</Markdown>
-    </chakra.Text>
+    </p>
   );
 }
